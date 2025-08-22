@@ -1,0 +1,21 @@
+@use "../utils" as u;
+
+.footer {
+  text-align: center;
+  padding: 5rem;
+  background-color: u.$gray-400;
+  color: u.$white;
+
+  @include u.breakpoint(lg) {
+    padding: 4rem 2rem;
+  }
+
+  a {
+    color: u.$yellow;
+    transition: 0.3s;
+
+    &:hover {
+      color: rgba(u.$yellow, 0.8);
+    }
+  }
+}

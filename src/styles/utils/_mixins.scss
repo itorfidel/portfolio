@@ -1,0 +1,90 @@
+@use "./variables" as v;
+
+@mixin maxWidth {
+  width: min(90%, 110rem);
+  margin: 0 auto;
+
+  @include breakpoint(md) {
+    max-width: 50rem;
+  }
+}
+
+@mixin flex($justify, $direction) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+@mixin grid($columns, $gap) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-gap: $gap;
+}
+
+$breakpoint-values: (
+  "xl": 1279px,
+  "lg": 1023px,
+  "md": 767px,
+  "sm": 539px,
+  "vs": 399px,
+  "xs": 359px,
+);
+
+@mixin breakpoint($point) {
+  @media (max-width: map-get($breakpoint-values, $point)) {
+    @content;
+  }
+}
+
+@mixin reloadSlideEffect($slideDirection) {
+  @if $slideDirection == down {
+    @keyframes slide-up-reverse {
+      0% {
+        transform: translateY(-3rem);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    animation: slide-up-reverse 0.8s ease;
+  } @else if $slideDirection == up {
+    @keyframes slide-up {
+      0% {
+        transform: translateY(3rem);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    animation: slide-up 1s ease;
+  }
+}
+
+@mixin inViewSlideEffect($slideDirection) {
+  @if $slideDirection == down {
+    transform: translateY(-3rem);
+    opacity: 0.5;
+    transition: 0.8s ease;
+
+    &.inView {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  } @else if $slideDirection == up {
+    transform: translateY(3rem);
+    opacity: 0.5;
+    transition: 0.8s ease;
+
+    &.inView {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@use "../utils" as u;
+
+.card {
+  @include u.flex(unset, row);
+  gap: 1rem;
+  color: u.$white;
+
+  img {
+    width: 2rem;
+  }
+}

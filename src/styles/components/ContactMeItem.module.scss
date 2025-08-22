@@ -1,0 +1,66 @@
+@use "../utils" as u;
+
+.item {
+  @include u.flex(center, column);
+  flex: 1;
+  text-align: center;
+  @include u.inViewSlideEffect(up);
+
+  .icon {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    @include u.flex(center, row);
+    margin-bottom: 3.2rem;
+
+    svg {
+      font-size: 3.5rem;
+      color: u.$yellow;
+    }
+  }
+
+  h4 {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-bottom: 2.4rem;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    color: u.$white;
+  }
+
+  .linkContainer {
+    position: relative;
+
+    &:hover {
+      .tooltip {
+        visibility: visible;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .link {
+    @include u.flex(unset, column);
+  }
+
+  .tooltip {
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    user-select: none;
+    background-color: darken(u.$gray-200, 35%);
+    font-size: 1.3rem;
+    text-transform: capitalize;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s ease;
+  }
+}

@@ -1,0 +1,79 @@
+@use "../utils" as u;
+
+.navbar {
+  background-color: transparent;
+  transition: 0.3s;
+  z-index: 999;
+
+  &.scrolled {
+    position: sticky;
+    top: 0;
+    background-color: u.$black;
+  }
+
+  .container {
+    @include u.maxWidth;
+    @include u.flex(space-between, row);
+    padding: 1.25rem 0;
+  }
+
+  .title {
+    font-size: clamp(2.2rem, 2.4vw, 2.7rem);
+  }
+
+  .mobileMenu,
+  .mobileMenuExit {
+    display: none;
+    cursor: pointer;
+    font-size: 2.8rem;
+
+    @include u.breakpoint(md) {
+      display: block;
+    }
+  }
+
+  .mobileMenuExit {
+    position: absolute;
+    top: 2rem;
+    right: 10%;
+  }
+
+  nav {
+    @include u.breakpoint(md) {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 25rem;
+      background-color: u.$black;
+      padding: 1rem;
+      transform: translateX(100%);
+      transition: 0.5s;
+      z-index: 999;
+    }
+
+    &.show {
+      transform: translateX(0);
+    }
+  }
+
+  ul {
+    @include u.breakpoint(md) {
+      margin-top: 8rem;
+    }
+  }
+
+  li {
+    @include u.breakpoint(md) {
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      @include u.breakpoint(md) {
+        width: 100%;
+        padding: 1rem;
+      }
+    }
+  }
+}

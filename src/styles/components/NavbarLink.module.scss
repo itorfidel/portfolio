@@ -1,0 +1,41 @@
+@use "../utils" as u;
+
+.navbarLink {
+  display: inline-block;
+  color: u.$white;
+
+  &:hover,
+  &.active {
+    span {
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &.active {
+    color: u.$yellow;
+  }
+
+  a {
+    padding: 1.12rem 2rem;
+    display: inline-block;
+
+    span {
+      position: relative;
+      padding-bottom: 0.3rem;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0.2rem;
+        background-color: u.$yellow;
+        transform: scale(0);
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
+}

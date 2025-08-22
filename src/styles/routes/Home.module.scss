@@ -1,0 +1,312 @@
+@use "../utils" as u;
+
+.margTopExtend {
+  margin-top: 4.8rem;
+}
+
+p.description {
+  text-align: center;
+  margin-top: -5rem;
+
+  @include u.breakpoint(lg) {
+    width: 90%;
+    margin-inline: auto;
+  }
+
+  @include u.breakpoint(md) {
+    margin-top: -3rem;
+  }
+
+  @include u.breakpoint(sm) {
+    width: 100%;
+    margin-top: -1.5rem;
+  }
+}
+
+section {
+  display: block;
+  @include u.maxWidth;
+  margin-bottom: 11.2rem;
+
+  &:not(:nth-of-type(1), :nth-of-type(2)) {
+    margin-bottom: 22.4rem;
+
+    @include u.breakpoint(lg) {
+      margin-bottom: 19.2rem;
+    }
+  }
+
+  @include u.breakpoint(lg) {
+    margin-bottom: 9.6rem;
+  }
+}
+
+.hero {
+  .container {
+    @include u.flex(space-between, row);
+    gap: 2rem;
+
+    @include u.breakpoint(md) {
+      flex-direction: column-reverse;
+      justify-content: unset;
+      gap: 0;
+    }
+  }
+
+  .left {
+    @include u.reloadSlideEffect(up);
+
+    @include u.breakpoint(md) {
+      text-align: center;
+    }
+
+    h3 {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+      color: u.$yellow;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 6vw, 6rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-block: 1.6rem 2.4rem;
+
+      span {
+        color: u.$yellow;
+      }
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 2.4vw, 3rem);
+      font-weight: 400;
+      text-transform: capitalize;
+      margin-bottom: 2.4rem;
+    }
+
+    .button {
+      &:not(:last-child) {
+        margin-right: 0.6rem;
+
+        @include u.breakpoint(lg) {
+          margin-right: 0;
+        }
+      }
+
+      @include u.breakpoint(lg) {
+        transform: scale(0.9);
+      }
+    }
+  }
+
+  .right {
+    height: 69rem;
+    width: 50%;
+    transform: translateY(-4rem);
+    z-index: -1;
+    background: u.$black
+      url("https://images.pexels.com/photos/17516101/pexels-photo-17516101/free-photo-of-man-portrait-in-darkness.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
+      center center/cover no-repeat;
+
+    @include u.breakpoint(lg) {
+      height: 50rem;
+    }
+
+    @include u.breakpoint(md) {
+      transform: translateY(0);
+      height: 32rem;
+    }
+  }
+}
+
+.about {
+  .container {
+    @include u.flex(space-around, row);
+    align-items: stretch;
+    gap: 9rem;
+    @extend .margTopExtend;
+
+    @include u.breakpoint(md) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .left {
+      @include u.breakpoint(md) {
+        display: none;
+      }
+
+      img {
+        height: 60em;
+      }
+    }
+
+    .right {
+      flex: 2;
+      @include u.inViewSlideEffect(up);
+
+      .title {
+        text-align: start;
+      }
+
+      ul {
+        margin-block: 4rem;
+      }
+
+      li {
+        margin-bottom: 1rem;
+        font-size: u.$fontSizeBase;
+
+        span {
+          width: 130px !important;
+          display: inline-block;
+          font-weight: 600;
+          color: u.$white;
+        }
+      }
+    }
+
+    h4 {
+      margin-bottom: 2.4rem;
+    }
+  }
+}
+
+.services {
+  .container {
+    @extend .margTopExtend;
+    @include u.grid(repeat(3, 1fr), 3rem);
+    grid-gap: 4rem 3rem;
+
+    @include u.breakpoint(lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include u.breakpoint(md) {
+      grid-template-columns: 1fr;
+      grid-gap: 3rem;
+    }
+  }
+}
+
+.skills {
+  .container {
+    @extend .margTopExtend;
+    @include u.grid(repeat(2, 1fr), 3rem);
+    grid-gap: 1.5rem 3rem;
+
+    @include u.breakpoint(md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .expressIcon {
+    filter: contrast(0);
+  }
+}
+
+.projects {
+  .container {
+    @extend .margTopExtend;
+    @include u.grid(repeat(3, 1fr), 3rem);
+
+    @include u.breakpoint(lg) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      width: 85%;
+      margin-inline: auto;
+    }
+
+    @include u.breakpoint(md) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+}
+
+.contact {
+  .container {
+    @extend .margTopExtend;
+    @include u.flex(center, column);
+  }
+
+  .info {
+    width: 100%;
+    @include u.grid(repeat(4, 1fr), 2rem);
+    margin-block: 2.4rem;
+
+    @include u.breakpoint(lg) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 6rem 2rem;
+    }
+
+    @include u.breakpoint(md) {
+      width: 100%;
+      grid-template-columns: 1fr;
+      grid-gap: 6rem;
+    }
+
+    .address {
+      p {
+        color: unset;
+      }
+    }
+  }
+
+  .formContainer {
+    width: 100%;
+    @extend .margTopExtend;
+    @include u.flex(unset, row);
+    background-color: u.$gray-100;
+    border-radius: 0.5rem;
+
+    @include u.breakpoint(md) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .image {
+    width: 50%;
+    height: 35rem;
+    background: url("https://images.pexels.com/photos/17516101/pexels-photo-17516101/free-photo-of-man-portrait-in-darkness.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
+      center center/cover no-repeat;
+  }
+
+  form {
+    width: 50%;
+    padding: 4.8rem;
+    background-color: #f8f9fa;
+
+    @include u.breakpoint(md) {
+      width: 100%;
+    }
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 1.4rem 1.2rem;
+    margin-bottom: 1.6rem;
+    font-size: clamp(1.25rem, 1.75vw, 1.5rem);
+    background-color: u.$white;
+    color: u.$black;
+    outline: 1px solid #ced4da;
+    border-radius: 0.5rem;
+    transition: 0.15s ease;
+
+    &:focus {
+      outline: 2px solid u.$yellow;
+    }
+  }
+
+  textarea {
+    height: 17rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .submitBtn {
+    padding-inline: 4.8rem;
+    margin-bottom: 1.6rem;
+  }
+}

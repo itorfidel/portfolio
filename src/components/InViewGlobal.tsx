@@ -1,24 +1,39 @@
 import React from "react";
 import { InView } from "react-intersection-observer";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   id: string;
   className?: string;
   children: React.ReactNode;
-  onChange: (
-    inView: boolean,
-    navigateTo: string,
-    setInView: React.Dispatch<React.SetStateAction<boolean>>
-  ) => void;
+  navigateTo: string;
+  setInView: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const InViewGlobal = ({ id, className, onChange, children }: Props) => {
+const InViewGlobal = ({
+  id,
+  className,
+  children,
+  navigateTo,
+  setInView,
+}: Props) => {
+  const navigate = useNavigate();
+
+  const handleInView = (inView: boolean) => {
+    if (inView) {
+      navigate(navigateTo);
+      setInView(true);
+    } else {
+      setInView(false);
+    }
+  };
+
   return (
     <InView
       as="section"
       className={className}
       id={id}
-      onChange={onChange}
+      onChange={(inView) => handleInView(inView)}
       threshold={0.5}
     >
       {children}

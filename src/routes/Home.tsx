@@ -5,7 +5,7 @@ import {
   Home as HomeIcon,
   Phone,
 } from "@mui/icons-material";
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -16,7 +16,6 @@ import Title from "../components/Title";
 import ProjectsCard from "../components/ProjectsCard";
 import ContactMeItem from "../components/ContactMeItem";
 import ServicesCard from "../components/ServicesCard";
-import { useNavigate } from "react-router-dom";
 import InViewGlobal from "../components/InViewGlobal";
 
 const Home = () => {
@@ -27,20 +26,8 @@ const Home = () => {
   const [skillsInView, setSkillsInView] = useState(false);
   const [projectsInView, setProjectsInView] = useState(false);
   const [contactInView, setContactInView] = useState(false);
-  const navigate = useNavigate();
 
-  const handleInView = (
-    inView: boolean,
-    navigateTo: string,
-    setInView: React.Dispatch<React.SetStateAction<boolean>>
-  ) => {
-    if (inView) {
-      navigate(navigateTo);
-      setInView(true);
-    } else {
-      setInView(false);
-    }
-  };
+  console.log(heroInView);
 
   return (
     <main className={styles.home}>
@@ -49,7 +36,8 @@ const Home = () => {
       <InViewGlobal
         className={styles.hero}
         id="hero-section"
-        onChange={(inview) => handleInView(inview, "/", setHeroInView)}
+        navigateTo="/"
+        setInView={setHeroInView}
       >
         <div className={styles.container}>
           <div className={styles.left}>
@@ -84,9 +72,8 @@ const Home = () => {
       <InViewGlobal
         className={`${styles.about} ${aboutInView ? styles.inView : ""}`}
         id="about-section"
-        onChange={(inView) => {
-          handleInView(inView, "/about", setAboutInView);
-        }}
+        navigateTo="/about"
+        setInView={setAboutInView}
       >
         <div className={styles.container}>
           <div className={styles.left}>
@@ -138,9 +125,8 @@ const Home = () => {
       <InViewGlobal
         className={`${styles.services} ${servicesInView ? styles.inView : ""}`}
         id="services-section"
-        onChange={(inView) => {
-          handleInView(inView, "/services", setServicesInView);
-        }}
+        navigateTo="/services"
+        setInView={setServicesInView}
       >
         <Title titleSm="My services" titleLg="services" />
         <p className={styles.description}>
@@ -161,9 +147,8 @@ const Home = () => {
       <InViewGlobal
         className={`${styles.skills} ${skillsInView ? styles.inView : ""}`}
         id="skills-section"
-        onChange={(inView) => {
-          handleInView(inView, "/skills", setSkillsInView);
-        }}
+        navigateTo="/skills"
+        setInView={setSkillsInView}
       >
         <Title titleSm="My Skills" titleLg="skills" />
         <p className={styles.description}>
@@ -211,9 +196,8 @@ const Home = () => {
       <InViewGlobal
         className={`${styles.projects} ${projectsInView ? styles.inView : ""}`}
         id="projects-section"
-        onChange={(inView) => {
-          handleInView(inView, "/projects", setProjectsInView);
-        }}
+        navigateTo="/projects"
+        setInView={setProjectsInView}
       >
         <Title titleSm="My Projects" titleLg="projects" />
         <p className={styles.description}>
@@ -246,9 +230,8 @@ const Home = () => {
       <InViewGlobal
         className={`${styles.contact} ${contactInView ? styles.inView : ""}`}
         id="contact-section"
-        onChange={(inView) => {
-          handleInView(inView, "/contact", setContactInView);
-        }}
+        navigateTo="/contact"
+        setInView={setContactInView}
       >
         <Title titleSm="contact me" titleLg="contact" />
         <p className={styles.description}>

@@ -94,7 +94,7 @@ const Home = () => {
             {/* <p>I'm</p> */}
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga,
-              incidunt hic? Quo quis animi explicabo.
+              incidunt hic? Quo quis animi explicabo. ifiaoe
             </p>
             <ul>
               <li>
